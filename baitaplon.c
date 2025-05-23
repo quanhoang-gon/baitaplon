@@ -42,7 +42,7 @@ void themGhiChu(Node **head, const char *noiDung) {
     }
 }
 
-//hien thi ghi chu 
+//hiển thị ghi chú 
 void hienThiGhiChu(Node *head) {
     printf("\n--- Ghi chú thao tác ---\n");
     int i = 1;
@@ -76,7 +76,7 @@ void nhapDanhSach(SinhVien **ds, int *n) {
     }
 }
 
-// ==== Hiển thị danh sách sinh viên ====
+// Hiển thị danh sách sinh viên
 void hienThiDanhSach(SinhVien *ds, int n) {
     printf("\n--- Danh sách sinh viên ---\n");
     for (int i = 0; i < n; i++) {
@@ -91,7 +91,7 @@ void hienThiDanhSach(SinhVien *ds, int n) {
     }
 }
 
-//ghi danh sach 
+//Ghi danh sách 
 void ghiFile(SinhVien *ds, int n, const char *tenTep) {
     FILE *f = fopen(tenTep, "w");
     if (f == NULL) {
