@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-// === Cấu trúc Sinh viên ===
 typedef struct {
     char msv[20];
     char hoTen[50];
@@ -11,14 +9,12 @@ typedef struct {
     float dtb;
     char diaChi[100];
 } SinhVien;
-
-// === Cấu trúc danh sách liên kết để ghi chú thao tác ===
 typedef struct Node {
     char ghiChu[100];
     struct Node *next;
 } Node;
 
-// ==== Hàm menu ====
+//Hàm menu 
 void menu() {
     printf("\n====== MENU ======\n");
     printf("1. Nhập danh sách sinh viên\n");
@@ -31,7 +27,7 @@ void menu() {
     printf("==================\n");
 }
 
-// ==== Hàm thêm ghi chú vào danh sách liên kết ====
+//Hàm thêm ghi chú vào danh sách liên kết
 void themGhiChu(Node **head, const char *noiDung) {
     Node *newNode = (Node*)malloc(sizeof(Node));
     strcpy(newNode->ghiChu, noiDung);
@@ -46,7 +42,7 @@ void themGhiChu(Node **head, const char *noiDung) {
     }
 }
 
-// ==== Hiển thị ghi chú thao tác ====
+//hien thi ghi chu 
 void hienThiGhiChu(Node *head) {
     printf("\n--- Ghi chú thao tác ---\n");
     int i = 1;
@@ -56,7 +52,7 @@ void hienThiGhiChu(Node *head) {
     }
 }
 
-// ==== Nhập danh sách sinh viên ====
+//Nhập danh sách sinh viên
 void nhapDanhSach(SinhVien **ds, int *n) {
     printf("Nhập số lượng sinh viên: ");
     scanf("%d", n);
@@ -95,7 +91,7 @@ void hienThiDanhSach(SinhVien *ds, int n) {
     }
 }
 
-// ==== Ghi danh sách ra file ====
+//ghi danh sach 
 void ghiFile(SinhVien *ds, int n, const char *tenTep) {
     FILE *f = fopen(tenTep, "w");
     if (f == NULL) {
@@ -117,17 +113,17 @@ void ghiFile(SinhVien *ds, int n, const char *tenTep) {
     printf("Đã ghi danh sách vào file '%s'\n", tenTep);
 }
 
-// ==== Hàm so sánh theo tên dùng cho con trỏ hàm ====
+//Hàm so sánh theo tên 
 int soSanhTen(SinhVien a, SinhVien b) {
     return strcmp(a.hoTen, b.hoTen);
 }
 
-// ==== Hàm so sánh theo điểm TB ====
+//Hàm so sánh theo điểm TB
 int soSanhDTB(SinhVien a, SinhVien b) {
     return b.dtb > a.dtb ? 1 : -1;
 }
 
-// ==== Hàm sắp xếp dùng con trỏ hàm ====
+//Hàm sắp xếp 
 void sapXep(SinhVien *ds, int n, int (*cmp)(SinhVien, SinhVien)) {
     for (int i = 0; i < n - 1; i++) {
         for (int j = i + 1; j < n; j++) {
@@ -185,7 +181,6 @@ int main() {
         }
     } while (luaChon != 0);
 
-    // Giải phóng bộ nhớ
     free(ds);
     while (ghiChu != NULL) {
         Node *tmp = ghiChu;
